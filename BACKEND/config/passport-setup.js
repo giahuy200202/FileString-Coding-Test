@@ -5,8 +5,8 @@ import User from '../models/userModel.js'
 const google = passport.use(
   new GoogleStrategy({
     callbackURL: '/codingTest/api/v1/auth/google/redirect',
-    clientID: '997261922744-3t42l5qkl57eqse5b43intg35rbbr49e.apps.googleusercontent.com',
-    clientSecret: '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',
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     passReqToCallback: true,
   }, (req, accessToken, refreshToken, profile, done) => {
     User.findOne({ googleId: profile.id,role: req.query.state }).then(async currentUser => {
