@@ -1,41 +1,23 @@
-import { useState, useRef, useContext, useEffect, Suspense } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import AuthContext from "../../../store/auth-context";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../../../store/authContext";
 import { useLocation } from "react-router-dom";
 
-import { ReactComponent as GoogleIcon } from '../../../assets/svg/login/google.svg';
-import { ReactComponent as HideIcon } from '../../../assets/svg/login/hide.svg';
-import { ReactComponent as ShowIcon } from '../../../assets/svg/login/show.svg';
+import { ReactComponent as GoogleIcon } from '../../../assets/svg/auth/google.svg';
+import { ReactComponent as HideIcon } from '../../../assets/svg/auth/hide.svg';
+import { ReactComponent as ShowIcon } from '../../../assets/svg/auth/show.svg';
 
 import BeatLoader from "react-spinners/BeatLoader";
 import toast from "react-hot-toast";
+
+import { styleError, styleSuccess } from "../../../helpers/toastStyle";
 
 const Login = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
   const authCtx = useContext(AuthContext);
-
-  const styleSuccess = {
-    style: {
-      border: "2px solid #28a745",
-      padding: "10px",
-      color: "#28a745",
-      fontWeight: "500",
-    },
-    duration: 2000,
-  };
-
-  const styleError = {
-    style: {
-      border: "2px solid red",
-      padding: "10px",
-      color: "red",
-      fontWeight: "500",
-    },
-    duration: 4000,
-  };
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -106,7 +88,7 @@ const Login = () => {
     <div className="flex justify-center items-center h-screen">
       <form
         onSubmit={submitHandler}
-        className="p-5 w-[450px]"
+        className="p-12 w-[520px] rounded-2xl border-2 border-colorBorder bg-white"
       >
         <h1 className="text-4xl">Welcome back !</h1>
         <p className="mt-3 text-lg">
@@ -141,11 +123,11 @@ const Login = () => {
               placeholder="Password"
             />
             {!showPassword ? (
-              <div className="absolute right-8 top-3 w-5 h-5 ml-2 cursor-pointer" onClick={handleShowPassword}>
+              <div className="absolute w-5 h-5 right-5 top-4 ml-2 cursor-pointer" onClick={handleShowPassword}>
                 <ShowIcon />
               </div>
             ) : (
-              <div className="absolute right-8 top-3 w-5 h-5 ml-2 cursor-pointer" onClick={handleShowPassword}>
+              <div className="absolute w-5 h-5 right-5 top-4 ml-2 cursor-pointer" onClick={handleShowPassword}>
                 <HideIcon />
               </div>
             )}
@@ -153,13 +135,13 @@ const Login = () => {
         </div>
 
         <div className="flex justify-end">
-          <button className="text-blue font-bold text-sm" onClick={() => { navigate("/forget-password") }}>
+          <div className="text-blue font-bold text-sm cursor-pointer" onClick={() => { navigate("/forget-password") }}>
             Forgot your password ?
-          </button>
+          </div>
         </div>
 
         <button
-          className="bg-blue text-white py-2 px-4 h-12 rounded-lg w-full mt-6 flex items-center justify-center"
+          className="bg-blue text-white py-2 px-4 h-12 rounded-lg w-full mt-8 flex items-center justify-center"
           type="submit"
         >
           {isLoading ? (

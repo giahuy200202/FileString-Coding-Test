@@ -1,5 +1,5 @@
-import ForgotPassword from "../components/Auth/ForgotPassword/forgotPassword";
-import toast, { Toaster } from 'react-hot-toast';
+import ForgotPassword from "../components/auth/forgotPassword/forgotPassword";
+import { Toaster } from 'react-hot-toast';
 import React from "react";
 
 const ForgotPasswordPage = () => {

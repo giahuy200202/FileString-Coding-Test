@@ -1,5 +1,5 @@
-import Login from "../components/Auth/Login/login";
-import toast, { Toaster } from 'react-hot-toast';
+import Login from "../components/auth/login/login";
+import { Toaster } from 'react-hot-toast';
 import React from "react";
 
 const LoginPage = () => {

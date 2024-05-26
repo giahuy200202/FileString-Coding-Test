@@ -1,5 +1,5 @@
-import Register from "../components/Auth/Register/register";
-import toast, { Toaster } from 'react-hot-toast';
+import Register from "../components/auth/register/register";
+import { Toaster } from 'react-hot-toast';
 import React from "react";
 
 const RegisterPage = () => {

@@ -1,15 +1,15 @@
-import { useContext } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import Layout from "../components/Layout/Layout";
-import AuthContext from "../store/auth-context";
-import LoginPage from "../pages/LoginPage";
-import RegisterPage from "../pages/RegisterPage";
-import HomePage from "../pages/HomePage";
-import ForgotPasswordPage from "../pages/ForgotPasswordPage";
-import ProtectedRoute from "./ProtectedRoute";
+// import { useContext } from "react";
+import { Routes, Route } from "react-router-dom";
+import Layout from "../layout/layout";
+// import AuthContext from "../store/authContext";
+import LoginPage from "../pages/loginPage";
+import RegisterPage from "../pages/registerPage";
+import HomePage from "../pages/homepage";
+import ForgotPasswordPage from "../pages/forgotPasswordPage";
+import ProtectedRoute from "./protectedRoute";
 
 const AppRoutes = () => {
-  const authCtx = useContext(AuthContext);
+  // const authCtx = useContext(AuthContext);
 
   return (
     <Routes>

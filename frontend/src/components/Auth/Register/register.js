@@ -1,18 +1,18 @@
-import styles from './register.module.css';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from "react-router-dom";
-import Spinner from 'react-bootstrap/Spinner'
+
+
+import { useNavigate } from "react-router-dom";
+
 import { useState, useRef, useContext } from 'react';
 import axios from 'axios'
-import AuthContext from '../../../store/auth-context'
+import AuthContext from '../../../store/authContext'
 
-import { ReactComponent as GoogleIcon } from '../../../assets/svg/login/google.svg';
-import { ReactComponent as HideIcon } from '../../../assets/svg/login/hide.svg';
-import { ReactComponent as ShowIcon } from '../../../assets/svg/login/show.svg';
+import { ReactComponent as HideIcon } from '../../../assets/svg/auth/hide.svg';
+import { ReactComponent as ShowIcon } from '../../../assets/svg/auth/show.svg';
 
 import BeatLoader from "react-spinners/BeatLoader";
 import toast from "react-hot-toast";
+import { ReactComponent as BackIcon } from '../../../assets/svg/auth/back.svg'
+import { styleError, styleSuccess } from "../../../helpers/toastStyle";
 
 const Register = () => {
 
@@ -33,26 +33,6 @@ const Register = () => {
   const navigate = useNavigate();
 
   const [data, setData] = useState();
-
-  const styleSuccess = {
-    style: {
-      border: "2px solid #28a745",
-      padding: "10px",
-      color: "#28a745",
-      fontWeight: "500",
-    },
-    duration: 2000,
-  };
-
-  const styleError = {
-    style: {
-      border: "2px solid red",
-      padding: "10px",
-      color: "red",
-      fontWeight: "500",
-    },
-    duration: 4000,
-  };
 
   const submitHandler = (event) => {
     event.preventDefault()
@@ -115,7 +95,7 @@ const Register = () => {
     }
   }
 
-  const handleResend = () => {
+  const handleResendCode = () => {
     if (!isResendLoading) {
 
       setIsResendLoading(true)
@@ -124,11 +104,12 @@ const Register = () => {
         .then(res => {
           setIsResendLoading(false)
           setStep(3)
+          toast.success('Resend code successfully', styleSuccess);
         })
         .catch(err => {
           setIsResendLoading(false)
           // const message = err.response.data.message
-          console.log(err)
+          toast.error(err.response.data.message, styleError);
         })
     }
   }
@@ -138,7 +119,7 @@ const Register = () => {
       {step === 2 &&
         <form
           onSubmit={submitHandler}
-          className="p-5 w-[450px]"
+          className="p-12 w-[520px] rounded-2xl border-2 border-colorBorder bg-white"
         >
           <h1 className="text-4xl">Register</h1>
           <p className="mt-3 text-lg">
@@ -173,11 +154,11 @@ const Register = () => {
                 placeholder="Enter your password"
               />
               {!showPassword ? (
-                <div className="absolute right-8 top-3 w-5 h-5 ml-2 cursor-pointer" onClick={handleShowPassword}>
+                <div className="absolute w-5 h-5 right-5 top-4 ml-2 cursor-pointer" onClick={handleShowPassword}>
                   <ShowIcon />
                 </div>
               ) : (
-                <div className="absolute right-8 top-3 w-5 h-5 ml-2 cursor-pointer" onClick={handleShowPassword}>
+                <div className="absolute w-5 h-5 right-5 top-4 ml-2 cursor-pointer" onClick={handleShowPassword}>
                   <HideIcon />
                 </div>
               )}
@@ -198,11 +179,11 @@ const Register = () => {
                 placeholder="Enter your password again"
               />
               {!showPasswordConfirm ? (
-                <div className="absolute right-8 top-3 w-5 h-5 ml-2 cursor-pointer" onClick={handleShowPasswordConfirm}>
+                <div className="absolute w-5 h-5 right-5 top-4 ml-1 cursor-pointer" onClick={handleShowPasswordConfirm}>
                   <ShowIcon />
                 </div>
               ) : (
-                <div className="absolute right-8 top-3 w-5 h-5 ml-2 cursor-pointer" onClick={handleShowPasswordConfirm}>
+                <div className="absolute w-5 h-5 right-5 top-4 ml-1 cursor-pointer" onClick={handleShowPasswordConfirm}>
                   <HideIcon />
                 </div>
               )}
@@ -210,7 +191,7 @@ const Register = () => {
           </div>
 
           <button
-            className="mt-14 bg-blue text-white py-2 px-4 h-12 rounded-lg w-full mt-6 flex items-center justify-center"
+            className="mt-16 bg-blue text-white py-2 px-4 h-12 rounded-lg w-full flex items-center justify-center"
             type="submit"
           >
             {isLoading ? (
@@ -223,11 +204,11 @@ const Register = () => {
             ) : <div>Next</div>}
           </button>
 
-          <div className="flex gap-1 mt-7 justify-center">
-            <p>Already had an account?</p>
-            <button className="text-blue font-bold underline underline-offset-4" onClick={() => { navigate("/login") }}>
-              Login
-            </button>
+          <div className="flex gap-2 mt-7 justify-center items-center	cursor-pointer" onClick={() => { navigate('/login'); }}>
+            <BackIcon />
+            <div className="text-blue underline underline-offset-4" >
+              Back
+            </div>
           </div>
 
         </form>
@@ -236,7 +217,7 @@ const Register = () => {
       {step === 3 &&
         <form
           onSubmit={submitVerifyCodeHandler}
-          className="p-5 w-[450px]"
+          className="p-12 w-[520px] rounded-2xl border-2 border-colorBorder bg-white"
         >
           <h1 className="text-4xl">Register</h1>
           <p className="mt-3 text-lg">
@@ -257,8 +238,14 @@ const Register = () => {
             />
           </div>
 
+          <div className="flex justify-end">
+            <div className="text-blue text-sm font-bold cursor-pointer" onClick={handleResendCode}>
+              Resend verify code
+            </div>
+          </div>
+
           <button
-            className="mt-14 bg-blue text-white py-2 px-4 h-12 rounded-lg w-full mt-6 flex items-center justify-center"
+            className="mt-12 bg-blue text-white py-2 px-4 h-12 rounded-lg w-full flex items-center justify-center"
             type="submit"
           >
             {isLoading ? (
@@ -271,14 +258,14 @@ const Register = () => {
             ) : <div>Verify</div>}
           </button>
 
-          <div className="flex gap-1 mt-7 justify-center">
-            <p>Already had an account?</p>
-            <button className="text-blue font-bold underline underline-offset-4" onClick={() => { navigate("/login") }}>
-              Login
-            </button>
+          <div className="flex gap-2 mt-7 justify-center items-center	cursor-pointer" onClick={() => { setStep(2); }}>
+            <BackIcon />
+            <div className="text-blue underline underline-offset-4" >
+              Back
+            </div>
           </div>
-
-        </form>}
+        </form>
+      }
     </div>
   );
 }

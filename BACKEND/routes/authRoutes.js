@@ -19,7 +19,7 @@ router.get('/google/redirect', passport.authenticate('google', {
   session: false
 }), authController.loginGoogle)
 
-router.post('/forget-password', authController.forgetPassword)
+router.post('/forgot-password', authController.forgetPassword)
 
 router.post('/change-password', authController.protect, authController.changePassword);
 

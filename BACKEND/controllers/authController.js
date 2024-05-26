@@ -165,7 +165,7 @@ const forgetPassword = catchAsync(async (req, res, next) => {
         );
 
       else if (data.password !== data.passwordConfirm)
-        return next(new AppError('Your passwords do not match', 400));
+        return next(new AppError('Your confirm password is incorrect', 400));
 
       const user = await User.findOne({ email: data.email }).select(
         '+password'
