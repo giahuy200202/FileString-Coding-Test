@@ -134,7 +134,7 @@ const forgotPasswordStep3 = () => {
         />
       ) : <div>Confirm</div>}
     </button>
-    <div className="flex gap-2 mt-7 justify-center items-center	cursor-pointer" onClick={() => { authCtx.setForgotPasswordStep(1); }}>
+    <div className="flex gap-2 mt-7 justify-center items-center	cursor-pointer" onClick={() => { authCtx.setForgotPasswordStep(2); }}>
       <BackIcon />
       <div className="text-blue underline underline-offset-4" >
         Back
