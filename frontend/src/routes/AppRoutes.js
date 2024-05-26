@@ -3,9 +3,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 import AuthContext from "../store/auth-context";
 import LoginPage from "../pages/LoginPage";
-import Register from "../components/Auth/Register/register";
+import RegisterPage from "../pages/RegisterPage";
 import HomePage from "../pages/HomePage";
-import ForgetPassword from "../components/Auth/ForgetPassword/forgetPassword";
+import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import ProtectedRoute from "./ProtectedRoute";
 
 const AppRoutes = () => {
@@ -13,11 +13,11 @@ const AppRoutes = () => {
 
   return (
     <Routes>
-      
+
       <Route element={<Layout />}>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/forget-password" element={<ForgotPasswordPage />} />
       </Route>
 
       <Route path="/" element={

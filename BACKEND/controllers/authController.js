@@ -50,7 +50,7 @@ const register = catchAsync(async (req, res, next) => {
     return next(new AppError('Your password is too weak (minimum 8 characters)', 400));
 
   else if (password !== passwordConfirm)
-    return next(new AppError('Your passwords do not match', 400));
+    return next(new AppError('Your confirm password is incorrect', 400));
 
   const founded_user = await User.findOne({ email: email });
 
@@ -72,15 +72,17 @@ const register = catchAsync(async (req, res, next) => {
 
 // Function to handle user registration verification
 const verifyRegister = catchAsync(async (req, res, next) => {
+
   if (req.body.code === verifyCode.toString()) {
+
     const newUser = await User.create({
-      email: req.body.email,
-      password: req.body.password,
+      email: req.body.data.email,
+      password: req.body.data.password,
       type: 'account',
-      class: [],
       notify: [],
       googleId: '',
     });
+
     createSendToken(newUser, 201, res);
   } else {
     return next(new AppError('Verify code is incorrect', 400));

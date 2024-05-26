@@ -8,12 +8,10 @@ import { ReactComponent as GoogleIcon } from '../../../assets/svg/login/google.s
 import { ReactComponent as HideIcon } from '../../../assets/svg/login/hide.svg';
 import { ReactComponent as ShowIcon } from '../../../assets/svg/login/show.svg';
 
-import { ReactSVG } from 'react-svg'
-import { Input } from "@material-tailwind/react";
 import BeatLoader from "react-spinners/BeatLoader";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
-function Login() {
+const Login = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
@@ -26,7 +24,7 @@ function Login() {
       color: "#28a745",
       fontWeight: "500",
     },
-    duration: 1500,
+    duration: 2000,
   };
 
   const styleError = {
@@ -43,10 +41,6 @@ function Login() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const [message, setMessage] = useState({
-    type: "success",
-    content: "",
-  });
 
   const navigate = useNavigate();
 
@@ -77,15 +71,11 @@ function Login() {
           toast.success("Login successfully", styleSuccess);
           setTimeout(function () {
             navigate("/", { replace: true });
-          }, 1500);
+          }, 2000);
 
         })
         .catch((err) => {
           setIsLoading(false);
-          setMessage({
-            type: "error",
-            content: err.response.data.message,
-          });
           toast.error(err.response.data.message, styleError);
         });
     }
@@ -94,13 +84,6 @@ function Login() {
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   }
-
-  const handleFocus = () => {
-    setMessage({
-      type: "success",
-      content: "",
-    });
-  };
 
   // get information when login with social
   const location = useLocation();
@@ -125,7 +108,6 @@ function Login() {
         onSubmit={submitHandler}
         className="p-5 w-[450px]"
       >
-        <ReactSVG />
         <h1 className="text-4xl">Welcome back !</h1>
         <p className="mt-3 text-lg">
           Enter to get unlimited access to all features
@@ -138,10 +120,10 @@ function Login() {
           <input
             ref={emailInputRef}
             required
-            className={`w-full h-12 px-4 rounded-lg border-2 border-colorBorder ${message.type === "error" && "border-2 border-colorBorderError"}`}
+            className={`w-full h-12 px-4 rounded-lg border-2 border-colorBorder`}
             type="email"
             id="email"
-            placeholder="Enter email"
+            placeholder="Enter your email"
           />
         </div>
 
@@ -153,7 +135,7 @@ function Login() {
             <input
               ref={passwordInputRef}
               required
-              className={`w-full h-12 px-4 rounded-lg border-2 border-colorBorder ${message.type === "error" && "border-2 border-colorBorderError"}`}
+              className={`w-full h-12 px-4 rounded-lg border-2 border-colorBorder `}
               type={showPassword ? "text" : "password"}
               id="password"
               placeholder="Password"
@@ -207,9 +189,9 @@ function Login() {
 
         <div className="flex gap-1 mt-7 justify-center">
           <p >Don't have an account?</p>
-          <div className="text-blue font-bold underline underline-offset-4" onClick={() => { navigate("/register") }}>
+          <button className="text-blue font-bold underline underline-offset-4" onClick={() => { navigate("/register") }}>
             Sign up
-          </div>
+          </button>
         </div>
 
       </form>
