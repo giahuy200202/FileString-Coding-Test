@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 import { ReactComponent as BackIcon } from '../../../assets/svg/auth/back.svg'
 import { styleError, styleSuccess } from "../../../helpers/toastStyle";
 
-const forgotPasswordStep2 = () => {
+const ForgotPasswordStep2 = () => {
 
   const authCtx = useContext(AuthContext);
 
@@ -109,4 +109,4 @@ const forgotPasswordStep2 = () => {
   );
 }
 
-export default forgotPasswordStep2;
+export default ForgotPasswordStep2;
