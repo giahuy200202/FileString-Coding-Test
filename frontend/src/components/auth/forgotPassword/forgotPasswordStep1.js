@@ -10,7 +10,6 @@ import toast from "react-hot-toast";
 import { ReactComponent as BackIcon } from '../../../assets/svg/auth/back.svg'
 import { styleError, styleSuccess } from "../../../helpers/toastStyle";
 
-
 const forgotPasswordStep1 = () => {
 
   const authCtx = useContext(AuthContext);
