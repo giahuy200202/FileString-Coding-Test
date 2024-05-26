@@ -11,7 +11,7 @@ router.post('/login', authController.login);
 router.get('/google', function (req, res, next) {
   passport.authenticate('google', {
     scope: ['profile', 'email'],
-    state: req.query.role
+    // state: req.query.role
   })(req, res, next)
 })
 

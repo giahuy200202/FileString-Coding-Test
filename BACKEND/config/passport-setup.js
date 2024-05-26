@@ -9,7 +9,7 @@ const google = passport.use(
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     passReqToCallback: true,
   }, (req, accessToken, refreshToken, profile, done) => {
-    User.findOne({ googleId: profile.id,role: req.query.state }).then(async currentUser => {
+    User.findOne({ googleId: profile.id}).then(async currentUser => {
       if (currentUser) {
         // if(currentUser.role!==req.)
 
