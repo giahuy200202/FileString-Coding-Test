@@ -9,6 +9,9 @@ import BeatLoader from "react-spinners/BeatLoader";
 import toast from "react-hot-toast";
 import { ReactComponent as BackIcon } from '../../../assets/svg/auth/back.svg'
 import { styleError, styleSuccess } from "../../../helpers/toastStyle";
+import { ReactComponent as HideIcon } from '../../../assets/svg/auth/hide.svg';
+import { ReactComponent as ShowIcon } from '../../../assets/svg/auth/show.svg';
+
 
 const ForgotPasswordStep3 = () => {
 
