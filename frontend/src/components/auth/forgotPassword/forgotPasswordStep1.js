@@ -1,14 +1,15 @@
 
-import { useState, useRef, useContext } from 'react';
-
-import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+
+import { useState, useRef, useContext } from 'react';
+import axios from 'axios'
+import AuthContext from '../../../store/authContext'
+
 import BeatLoader from "react-spinners/BeatLoader";
 import toast from "react-hot-toast";
 import { ReactComponent as BackIcon } from '../../../assets/svg/auth/back.svg'
 import { styleError, styleSuccess } from "../../../helpers/toastStyle";
 
-import AuthContext from '../../../store/authContext';
 
 const forgotPasswordStep1 = () => {
 
