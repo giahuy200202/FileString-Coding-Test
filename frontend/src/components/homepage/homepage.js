@@ -13,16 +13,16 @@ const HomepageComponent = () => {
   };
   return (
     <div className='flex flex-col h-screen justify-center items-center'>
-      <h1 className="text-5xl mb-40">Homepage</h1>
+      <h1 className="text-4xl mb-40">Homepage</h1>
 
       <RingLoader
         color="#1d4ed8"
-        size={400}
+        size={350}
         speedMultiplier={0.5}
       />
 
       <button
-        className="bg-blue text-white py-2 px-4 h-12 rounded-lg w-28 mt-40 flex items-center justify-center"
+        className="bg-blue text-white py-2 px-4 h-10 rounded-lg w-28 mt-40 flex items-center justify-center"
         onClick={logoutHandler}
       >
         Logout

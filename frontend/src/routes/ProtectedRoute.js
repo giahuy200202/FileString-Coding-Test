@@ -4,13 +4,13 @@ import { useContext } from "react";
 import AuthContext from "../store/authContext";
 
 const ProtectedRoute = ({ children }) => {
-    let location = useLocation();
-    const authCtx = useContext(AuthContext);
+  let location = useLocation();
+  const authCtx = useContext(AuthContext);
 
-    if (!authCtx.isLoggedIn) {
-        return <Navigate to="/login" state={{ from: location }} replace />
-    }
-    return children
+  if (!authCtx.isLoggedIn) {
+    return <Navigate to="/login" state={{ from: location }} replace />
+  }
+  return children
 
 };
 

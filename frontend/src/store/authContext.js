@@ -5,7 +5,6 @@ let logoutTimer;
 const calculateRemainingTime = (expirationTime) => {
   const currentTime = new Date().getTime();
   const adjExpirationTime = new Date(expirationTime).getTime();
-
   const remainingDuration = adjExpirationTime - currentTime;
 
   return remainingDuration;
@@ -14,7 +13,6 @@ const calculateRemainingTime = (expirationTime) => {
 const retrieveStoredToken = () => {
   const storedToken = localStorage.getItem('token');
   const storedExpirationDate = localStorage.getItem('expirationTime');
-
   const remainingTime = calculateRemainingTime(storedExpirationDate);
 
   if (remainingTime <= 3600) {
@@ -33,9 +31,20 @@ const AuthContext = React.createContext({
   token: '',
   isLoggedIn: false,
   userData: {},
-  setUserDataContext: (userDataParam) => {},
-  login: (token) => {},
-  logout: () => {},
+  registerStep: 1,
+  registerInputData: {},
+  forgotPasswordStep: 1,
+  forgotPasswordEmail: '',
+  forgotPasswordCode: '',
+
+  setUserDataContext: (userDataParam) => { },
+  login: (token) => { },
+  logout: () => { },
+  setRegisterStep: (step) => { },
+  setRegisterInputData: (data) => { },
+  setForgotPasswordStep: (step) => { },
+  setForgotPasswordEmail: (email) => { },
+  setForgotPasswordCode: (code) => { },
 });
 
 export const AuthContextProvider = (props) => {
@@ -48,8 +57,34 @@ export const AuthContextProvider = (props) => {
 
   const [token, setToken] = useState(initialToken);
   const [userData, setUserData] = useState({});
-
   const userIsLoggedIn = !!token;
+
+  const [step, setStep] = useState(1);
+  const [registerInputData, setRegisterInputData] = useState({});
+
+  const [forgotPasswordstep, setForgotPasswordstep] = useState(1);
+  const [email, setEmail] = useState('');
+  const [verifyCode, setVerifyCode] = useState('')
+
+  const setRegisterStepHandler = (step) => {
+    setStep(step);
+  };
+
+  const setRegisterInputDataHandler = (data) => {
+    setRegisterInputData(data);
+  };
+
+  const setForgotPasswordstepHandler = (step) => {
+    setForgotPasswordstep(step);
+  };
+
+  const setForgotPasswordEmailHandler = (email) => {
+    setEmail(email);
+  };
+
+  const setForgotPasswordCodeHandler = (code) => {
+    setVerifyCode(code);
+  };
 
   const logoutHandler = useCallback(() => {
     setToken(null);
@@ -62,18 +97,18 @@ export const AuthContextProvider = (props) => {
     }
   }, []);
 
-  const loginHandler = (token, expirationTime,_id) => {
+  const loginHandler = (token, expirationTime, _id) => {
 
     setToken(token);
     localStorage.setItem('token', token);
     localStorage.setItem('expirationTime', expirationTime);
-    localStorage.setItem('_id',_id)
+    localStorage.setItem('_id', _id)
 
     const remainingTime = calculateRemainingTime(expirationTime);
     logoutTimer = setTimeout(logoutHandler, remainingTime);
   };
 
-  const setUserDataHandler = (userDataParam) =>{
+  const setUserDataHandler = (userDataParam) => {
     setUserData(userDataParam);
   }
 
@@ -87,9 +122,20 @@ export const AuthContextProvider = (props) => {
     token: token,
     userData: userData,
     isLoggedIn: userIsLoggedIn,
+    registerStep: step,
+    forgotPasswordStep: forgotPasswordstep,
+    forgotPasswordEmail: email,
+    forgotPasswordCode: verifyCode,
+    registerInputData: registerInputData,
     setUserDataContext: setUserDataHandler,
+
     login: loginHandler,
     logout: logoutHandler,
+    setRegisterStep: setRegisterStepHandler,
+    setRegisterInputData: setRegisterInputDataHandler,
+    setForgotPasswordStep: setForgotPasswordstepHandler,
+    setForgotPasswordEmail: setForgotPasswordEmailHandler,
+    setForgotPasswordCode: setForgotPasswordCodeHandler,
   };
 
   return (
