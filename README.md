@@ -78,6 +78,13 @@ npm start
 ## DEMO
 > - Onedrive: https://ynh33-my.sharepoint.com/:f:/g/personal/giahuy200202_ynh33_onmicrosoft_com/EigEzza3g49Aiq9or04v5LUBZ5Mzcb93jtmSdjwomKGVUg?e=umgdwC
 
+## REFERENCES
+
+### I learned ReactJS and NodeJS from Udemy
+
+> - ReactJS: https://www.udemy.com/course/react-the-complete-guide-incl-redux/
+> - NodeJS (Express): https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/
+
 
 
 
