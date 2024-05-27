@@ -1,5 +1,5 @@
 # FileString-Coding-Test
-Create a login form using React, NodeJS (ExpressJS) and MongoDB
+Create a login form using ReactJS, NodeJS (Express) and MongoDB
 
 
 
