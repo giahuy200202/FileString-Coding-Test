@@ -37,19 +37,19 @@ Create a login form using React, NodeJS (ExpressJS) and MongoDB
 
 ### Frontend
 
-**Step 1: Change directory to frontend directory**
+Step 1: Change directory to frontend directory**
 
 ```console
 cd frontend
 ```
 
-**Step 2: Install all packages and dependencies of each service**
+Step 2: Install all packages and dependencies of each service**
 
 ```console
 npm i
 ```
 
-**Step 3: Run react app**
+Step 3: Run react app**
 
 ```console
 npm start
@@ -57,19 +57,19 @@ npm start
 
 ### Backend
 
-**Step 1: Change directory to backend directory**
+Step 1: Change directory to backend directory**
 
 ```console
 cd backend
 ```
 
-**Step 2: Install all packages and dependencies of each service**
+Step 2: Install all packages and dependencies of each service**
 
 ```console
 npm i
 ```
 
-**Step 3: Run node app**
+Step 3: Run node app**
 
 ```console
 npm start
