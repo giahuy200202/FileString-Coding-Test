@@ -54,6 +54,9 @@ const ForgotPasswordStep3 = () => {
           toast.success("Reset password successfully", styleSuccess);
           setTimeout(function () {
             navigate("/login", { replace: true });
+            authCtx.setForgotPasswordStep(1);
+            authCtx.setForgotPasswordCode('');
+            authCtx.setForgotPasswordEmail('');
           }, 2000);
         })
         .catch(err => {

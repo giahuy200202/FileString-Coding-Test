@@ -38,7 +38,10 @@ const RegisterStep2 = () => {
           toast.success('Register successfully', styleSuccess);
           setTimeout(function () {
             navigate("/", { replace: true });
+            authCtx.setRegisterStep(1);
+            authCtx.setUserDataContext({});
           }, 2000);
+
         })
         .catch(err => {
           setIsLoading(false)
