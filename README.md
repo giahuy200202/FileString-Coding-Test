@@ -32,7 +32,7 @@ Create a login form using ReactJS, NodeJS (Express) and MongoDB
 
 > First, to build a project you need to install **nodejs** and **reactjs** .
 
-> Second, clone the project and make sure that you have already in root folder.
+> Second, clone the project and make sure that you are in root folder.
 
 
 ### Frontend
