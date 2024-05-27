@@ -1,7 +1,7 @@
 # FileString-Coding-Test
 Create a login form using React, NodeJS (ExpressJS) and MongoDB
 
----
+
 
 ## FEATURES
 ### The source code provides full authentication flow
@@ -12,6 +12,21 @@ Create a login form using React, NodeJS (ExpressJS) and MongoDB
 > - Verify account
 > - Forgot password
 > - Logout
+
+## TECHNOLOGIES
+
+### Frontend
+
+> - ReactJS
+> - Tailwind CSS
+
+### Backend
+
+> - NodeJS (Express)
+
+### Database
+
+> - MongoDB
 
 ## INSTRUCTIONS
 
@@ -58,9 +73,10 @@ npm i
 
 ```console
 npm start
-```
 
----
+```
+## DEMO
+> - Onedrive: https://ynh33-my.sharepoint.com/:f:/g/personal/giahuy200202_ynh33_onmicrosoft_com/EigEzza3g49Aiq9or04v5LUBZ5Mzcb93jtmSdjwomKGVUg?e=umgdwC
 
 
 
